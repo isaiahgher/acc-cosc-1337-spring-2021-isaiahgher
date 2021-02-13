@@ -14,4 +14,10 @@ RESULT:
 5
 
 */
-
+void display_number(int num)
+{
+    for(int i=0; i < num; num++
+    {
+        std::cout<<i<<"\n";
+    }
+}

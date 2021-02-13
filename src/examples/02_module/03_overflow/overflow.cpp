@@ -10,9 +10,9 @@ add 1 to it, and returns it
 int int_overflow()
 {  
     auto num=2147483647;
-    num=num+1;
+    max=max+1;
 
-    return num;
+    return max;
 }
 double double_underflow()
 {
