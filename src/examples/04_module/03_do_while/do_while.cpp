@@ -1,17 +1,25 @@
 #include "do_while.h"
 
-using std::cout; using std::cin;
+using std::cin; using std::cout;
 
 //Write code for void function prompt_user to loop until
-//user opts not to continue.  
+//user opts not to continue. 
 void prompt_user()
 {
+    char choice;
+
     do
     {
-        cout<<"Type Y to continue N to exit: ";
+        run_menu();
+        cout<<"Type e or E to exit...";
         cin>>choice;
-    } while (choice=='y'||choice=='Y');
-    
+    }
+    while(!(choice == 'e' || choice == 'E'));
+} 
+
+void run_menu()
+{
+    cout<<"1-Accounting\n";
+    cout<<"2-Payroll\n";
+    cout<<"3- Exit\n\n";
 }
-
-

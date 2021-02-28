@@ -2,7 +2,7 @@
 
 int main() 
 {
-	std::string name="Joe";
+	std::string name="John";
 
 	display(name);
 	

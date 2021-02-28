@@ -2,11 +2,7 @@
 
 int main() 
 {
-	auto val==0;
-	std::cout<<"Enter a number: ";
-	std::cin<<val;
-
-	display_numbers(val);
+	display_numbers(5);
 
 	return 0;
 }
