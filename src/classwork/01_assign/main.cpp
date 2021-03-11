@@ -18,7 +18,7 @@ int main()
 
 	int num1=4;
 	result=multiply_numbers(num1);
-	std::cout<<"The result is: "<<result1;
+	std::cout<<"The result is: "<<result;
 
 	return 0;
 	
