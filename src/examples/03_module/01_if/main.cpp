@@ -10,22 +10,20 @@ int main()
 	bool even;
 	//create an int variable named value
 	int value;
-
 	//prompt user for a keyboard number
-	cout>>"Enter a number";
+	cout<<"enter a number to see if its even: ";
 	//assign the number to the value variable
-	cin>>value;
-
+	cin>> value;
 	//call the is_even function with value as its argument
+	even = is_even(even);
 	//and assign its return value to the even variable
-	even=is_even(value);
-	
+	if (even)
+	{
+		cout<<" is even"
+	}
 
 	//display even if number is even
-	if (even==true)
-	{
-		cout<<value<<"is even";
-	}
+
 
 	return 0;
 }

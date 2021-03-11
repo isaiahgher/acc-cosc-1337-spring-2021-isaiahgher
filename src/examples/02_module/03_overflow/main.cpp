@@ -1,18 +1,17 @@
-#include<iostream>
 #include "overflow.h"
-
-using std::cout; using std::cin;
+#include <iostream>
+using std::cin; using std::cout;
 
 
 int main()
 {
-    auto max = 214783647;
+    auto max = 2147483648;
+    cout <<"The max number is   "<<max<<"\n";
+    cout <<"BY adding one to max, it will create"<<"\n";
+    max = max + 1;
 
-    cout<<"The max in in C++ is: "<<max<<"\n";
-    cout<<"Add 1 to create C++ weirdness: \n";
-    cout<<"Max + 1 is: "<<int_overflow();
+    cout<<"Max + 1 ="<<overflow();
 
-    //cout<<"Int overflow: "<<int_overflow()<<"\n";
-    
+
     return 0;
 }

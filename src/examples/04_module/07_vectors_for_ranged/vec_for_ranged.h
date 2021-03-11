@@ -11,7 +11,7 @@ Write function prototype for void function loop_vector_w_for_ranged with no para
 Write function prototype for void function loop_vector_w_for_ranged_val with a vector of int pass by value parameter.
 
 */
-
+void loop_vector_w_for_ranged(std::vector<int> nums);
 
 
 /*

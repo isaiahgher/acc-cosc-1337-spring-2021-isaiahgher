@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 
+using std::cout;
 using std::vector;
 
 /*
@@ -20,7 +21,20 @@ Displays the numbers to screen using.
 
 @param vector<int>
 */
-
+void loop_vector_w_for_ranged(std::vector<int> nums)
+{
+    for(auto num: nums)
+    {
+        cout<<num<<"\n";
+        num=-1;
+    }
+    cout<<"\n\n";
+    for(auto num: nums)
+    {
+        cout<<num<<"\n";
+        num=-1;
+    }
+}
 
 
 /*

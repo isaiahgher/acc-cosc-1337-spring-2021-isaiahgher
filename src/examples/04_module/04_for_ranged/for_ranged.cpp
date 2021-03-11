@@ -1,8 +1,8 @@
 #include "for_ranged.h"
 
-using std::vector;
-using std::string;
 using std::cout;
+using std::string;
+using std::vector;
 
 /*
 Function loop_string_w_index 
@@ -15,9 +15,9 @@ s
 t
 @param string str
 */
-void loop_string_w_index(std::string str)
+void loop_string_w_for_loop(string str)
 {
-    for(decltype(str.size()) i=0; i < str.size(); ++i)
+    for(std::size_t i=0; i < str.size(); ++i)
     {
         cout<<str[i]<<"\n";
     }
@@ -41,5 +41,4 @@ void loop_string_w_for_range(std::string str)
         cout<<s<<"\n";
     }
 }
-
 
