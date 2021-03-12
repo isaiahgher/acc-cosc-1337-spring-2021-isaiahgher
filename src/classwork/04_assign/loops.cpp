@@ -1,16 +1,19 @@
 //cpp
 #include "loops.h"
+#include <iostream>
 
-int factorial(int num)
+using std::cout;
+
+int factorial(int num) 
 {
-    //Left this out here so that i can use the return statemnt outside the loop
-    int accumulator = 1;
 
-    for(int i = 1; i <= num; i = i + 1)
+    auto factorial_result = 1;
+    
+    for(int i=1; i <= num; ++i) 
     {
-        // Accumulator starting number is 1,but it will be multiply by i, so it will change its number depending on the end result of the operation/
-        accumulator = accumulator * i;
+        factorial_result *= i;
+        
     }
-    //returns accumulator
-    return accumulator;
+
+    return factorial_result;
 }
