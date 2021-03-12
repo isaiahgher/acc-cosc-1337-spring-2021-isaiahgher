@@ -5,6 +5,10 @@ using std::cout;
 int main()
 {
 	BankAccount account;
-	cout<<"Balance:"<<account.balance<<"\n";
+	cout<<sizeof(account)<<"\n";
+	auto balance=account.get_balance();
+
+	cout<<"Balance:"<<balance<<"\n";
+
 	return 0;
 }
