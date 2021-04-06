@@ -6,3 +6,9 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
+TEST_CASE("Test reference parameter") {
+	int num = 0;
+	ref_ptr(num);
+	
+	REQUIRE(num == 10);
+}
