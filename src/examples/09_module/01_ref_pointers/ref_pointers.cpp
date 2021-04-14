@@ -1,8 +1,8 @@
 #include "ref_pointers.h"
 
 //
-
-void use_smart_pointer(std::unique_ptr<int>& num)
+void ref_ptr(int& num, int* num1)
 {
-    std::cout<<"Smart Pointer Value: "<<*num<<"\n";
+    num = 10;
+    *num1 = 20;
 }

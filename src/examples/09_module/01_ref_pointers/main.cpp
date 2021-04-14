@@ -1,69 +1,57 @@
 #include "ref_pointers.h"
 #include<iostream>
 using std::cout;
+
 #include<memory>
-using std::unique_ptr;
+using std::unique_ptr; using std::make_unique;
+
 #include<vector>
+using std::vector;
 
 int main() 
 {
-	//reference
-	int num = 20;
-	int num1 = 25;
-	int& num_ref=num;
+	//references
+	int num = 0, num1 = 5;
+	int& num_ref = num;
 
 	cout<<"Value of num: "<<num<<"\n";
 	cout<<"Address of num: "<<&num<<"\n";
-	cout<<"Address of num via num_ref: "<<&num_ref<<"\n";
-	cout<<"Value of num via num_ref: "<<num_ref<<"\n";
+	cout<<"Value of num via num_ref: "<<num_ref<<"\n\n";
 
-	cout<<"Value of num1: "<<num1<<"\n";
+	num_ref = num1;//We got the value of num1 5??important to remember 
+	cout<<"Value of num1 via num_ref: "<<num_ref<<"\n";
 	cout<<"Address of num1: "<<&num1<<"\n";
+	cout<<"Address of num: "<<&num_ref<<"\n\n";
 
-	num_ref=num1;//WHAT? NO ERROR, references cant be reassigned???
-
-	cout<<"Address of num: "<<&num<<"\n";
-	cout<<"Address of num1: "<<&num1<<"\n";
-	cout<<"Address of num1 via num_ref ????: "<<&num_ref<<"\n\n\n";
-
-	//Pointers
-	int num2 = 10, num3=15;
+	//pointers
+	int num2 = 10, num3 = 15;
 	int* num_ptr = &num2;
 
 	cout<<"Value of num2: "<<num2<<"\n";
-	cout<<"Address of num2: "<< &num2<<"\n";
+	cout<<"Address of num2: "<<&num2<<"\n";
+	cout<<"Value of num2 via num_ptr: "<<*num_ptr<<"\n";
 	cout<<"Address of num2 via num_ptr: "<<num_ptr<<"\n";
-	cout<<"value of num2 via num_ptr: "<<&num_ptr<<"\n";
-	cout<<"Address of num_ptr: "<<&num_ptr<<"\n";
-	
-	*num_ptr = 5;
-	cout<<"Value of num2: "<<num2<<"\n\n\n";
+	cout<<"Address of num_ptr: "<<&num_ptr<<"\n\n";
 
-	num_ptr=&num3;
+	num_ptr = &num3;
 	cout<<"Value of num3: "<<num3<<"\n";
-	cout<<"Address of num3: "<< &num3<<"\n";
-	cout<<"Address of num3 via num_ptr: "<<num_ptr<<"\n";
+	cout<<"Address of num3: "<<&num3<<"\n";
+	cout<<"Value of num3 via num_ptr: "<<*num_ptr<<"\n";
+	cout<<"Address of num3 via num_ptr: "<<num_ptr<<"\n\n\n";
 
-	*num_ptr = 100;
-	cout<<"Value of num3: "<<num3<<"\n";
+	//dynamic memory
+	int* ptr_num = new int(5);//create
+	cout<<"Value : "<<*ptr_num<<"\n\n";//use memory
+	delete ptr_num;//release memory
 
-	int* ptr_num1=new int(5);//create dynamic memory
-	cout<<"Ptr num1 value: "<<*ptr_num1<<"\n";
-	delete ptr_num1;
+	//smart pointer-unique pointer
+	unique_ptr<int> up_num = make_unique<int>(100);
+	cout<<"Value of up num: "<<*up_num<<"\n";
+	cout<<"Address of up num: "<<&up_num<<"\n\n";
 
-	unique_ptr<int> up_num=make_unique<int>(100);//smart pointer;unique ptr;self
-	//memory management like the string and vector classes
-	cout<<"up num address  "<<*up_num<<"\n";
-	cout<<"Value of up num: "<<*up_num<<"\n\n";
-	use_smart_pointer(up_num);
-
-	//what about move:
-	vector<unique_ptr<int>>numbers;
+	vector<unique_ptr<int>> numbers;
 	numbers.push_back(std::move(up_num));
-	cout<<"Vector value: "<<*numbers[0]<<"\n";
-
-	unique_ptr<int> up_num2 = get_smart_pointer();
-	cout<<"Value: "<<*up_num2;
+	cout<<"Value of element 0: "<<*numbers[0]<<"\n";
 
 	return 0;
 }
