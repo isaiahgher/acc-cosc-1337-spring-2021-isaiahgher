@@ -7,8 +7,10 @@ TEST_CASE("Verify Test Configuration", "verification") {
 }
 
 TEST_CASE("Test reference parameter") {
-	int num = 0;
-	ref_ptr(num);
+
+	int num = 0, num1 = 0;
+	ref_ptr(num, &num1);
 	
 	REQUIRE(num == 10);
+	REQUIRE(num == 20);
 }

@@ -1,42 +1,32 @@
 #include "atm.h"
 #include "bank_account.h"
+#include "savings_account.h"
+#include "checking_account.h"
+
 #include<iostream>
-#include<time.h>
 using std::cout; using std::cin;
 
+#include<memory>
+using std::unique_ptr; using std::make_unique;
 
 int main()
 {
-	srand(time(NULL));
-	BankAccount account = get_account(100);
-	BankAccount a1(100), a2(100);
-	BankAccount a3 = a1 + a2;
-	cout<<a3;
-//	display_balance(account);
+	unique_ptr<SavingsAcount>  savings0 = make_unique<SavingsAcount>();
+	cout<<"Savings Balance: "<<savings0->get_balance()<<"\n";
 	
-	/*char choice;
-	ATM atm;
-	do
-	{
-		atm.scan_card();
-		atm.display_balance();
-		cout<<"Continue y?";
-		cin>>choice;
-	}while(choice == 'y' || choice == 'Y');
-	friend_display_balance(account);
-	display_balance(account);
+	unique_ptr<SavingsAcount> savings1 = make_unique<SavingsAcount>(1000);
+	cout<<"Savings Balance: "<<savings1->get_balance()<<"\n";
+	cout<<"Savings interest: "<<savings1->get_interest_earned()<<"\n\n";
+
+	CheckingAccount checking(100);
+	cout<<"Checking Balance: "<<checking.get_balance()<<"\n\n";
+
+	//pointers
+	BankAccount* a = new BankAccount(50);
+	SavingsAcount* b = new SavingsAcount(500);
 	
-//	cout<<sizeof(account)<<"\n";
-	auto balance = account.get_balance();
-	cout<<"Balance: "<<balance<<"\n";
-	cout<<"Deposit $50\n";
-	account.deposit(50);
-	balance = account.get_balance();
-	cout<<"Balance: "<<balance<<"\n\n";
-	cout<<"Withdraw $10\n";
-	account.withdraw(10);
-	balance = account.get_balance();
-	cout<<"Balance: "<<balance<<"\n";*/
+	
+	
 
 	return 0;
 }
