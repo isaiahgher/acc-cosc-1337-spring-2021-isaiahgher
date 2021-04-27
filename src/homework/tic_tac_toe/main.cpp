@@ -1,30 +1,80 @@
 #include <iostream>
-using namespace std;
+#include"tic_tac_toe.h"
+#include<limits>
+#include"tic_tac_toe_manager.h"
+#include"tic_tac_toe_3.h"
+#include"tic_tac_toe_4.h"
+#include<memory>
 
-#include "tic_tac_toe.h"
 
-char play_again;
+using std::cout;
+using std::cin;
 
 int main() 
 {
-	TicTacToe game;
-	string player;
-	int position;
+	TicTacToeManager manager;
+	std::string player;
+	std::unique_ptr<TicTacToe> tic_tac_toe;
 
-	cout<<"Tic Tac Toe board game\n";
-	cout<<"Player 1 please enter X or O to begin: ";
-	cin>>player;
-
-	game.start_game(player);
-	game.display_board();
-
-	do
+	char option;
+	int game_type;
+	do 
 	{
-		cout<<"Player "<<game.get_player()<<" Please input a number between 1 to 9 to play. \nPlease enter '10' to close the board: ";
-		cin>>position;
-		game.mark_board(position);
-		game.display_board();
+		cout<<"Please emter 3 or 4: ";
+		cin>>game_type;
+		while (!cin.good()|| (game_type < 3 || game_type > 4))
+		{
+			cin.clear();
+			cin.ignore(5, '\n');
 
-	} while(position != 10);
-	return 0;
-}
+			cout<<"Please enter 3 or 4: ";
+			cin>>game_type;
+		}
+
+		if(game_type ==3)
+		{
+			tic_tac_toe = std::make_unique<TicTacToe3>();
+
+		}
+		else 
+		{
+			tic_tac_toe = std::make_unique<TicTacToe4>();
+		}
+		
+		
+		while(player != "X" && player != "x" && player != "O" && player !="o")
+		{
+			cout<<"Please choose X or O for your player: ";
+			cin>>player;
+		}
+		tic_tac_toe->start_game(player);
+
+			do 
+			{
+				cin >> *tic_tac_toe;
+				cout << *tic_tac_toe;
+			}while (tic_tac_toe->game_over() == false);
+
+			player = "";
+			cout<< "Game over!!";
+			cout<< "\n The winner is: "<<tic_tac_toe->get_winner()<<"\n";
+
+			manager.save_game(tic_tac_toe);
+
+			int x_wins;
+			int o_wins;
+			int ties;
+			manager.get_winner_total(x_wins, o_wins, ties);
+
+			cout<< "X wins: "<<x_wins<<"\n";
+			cout<< "O wins: "<<o_wins<<"\n";
+			cout<< "Ties: "<<ties<<"\n";
+
+			cout<<"Enter y or Y to continue: ";
+			cin>>option;
+
+		}while (option == 'Y' || option == 'y');
+
+		cout<<manager;
+		return 0;
+	}

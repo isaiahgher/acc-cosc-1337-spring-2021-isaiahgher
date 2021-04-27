@@ -1,93 +1,58 @@
-//cpp
+#include "tic_tac_toe_3.h"
 
-#include "tic_tac_toe.h"
-#include <iostream>
-using namespace std;
-
-//Public functions of class Tictactoe
-// bool TicTacToe::game_over()
-// {
-//     return check_board_full();
-// }
-
-//start_game
-void TicTacToe::start_game(string first_player)
+/*
+class function check_column_win
+Win by column if and return true if
+0,3, and 6 are equal
+1, 4, and 7
+2, 5, and 8
+else
+false
+*/
+bool TicTacToe3::check_column_win()
+{ 
+    for (std::size_t i=0; i<3; i++)
 {
-    //first_player function argument value must be X or O
-    //using if else function
-    player = first_player;
-    this -> clear_board();
-}
-
-//mark_board
-void TicTacToe::mark_board(int position)
-{
-    //mark vector w position -1 equal to player
-    pegs[position-1] = this -> player;
-    //call set_next_player private function
-    this -> set_next_player();
-}
-
-
-//get_player
-// string TicTacToe::get_player() const
-// {
-//     return player; //player needs to be either X or O
-// }
-
-//display_board
-void TicTacToe::display_board() const
-{
-    //iterate vector of strings pegs to display 
-    //a tic tac toe board in 3x3 format
-    cout<<pegs[0]<<"|"<<pegs[1]<<"|"<<pegs[2]<<"|"<<"\n";
-    cout<<pegs[3]<<"|"<<pegs[4]<<"|"<<pegs[5]<<"|"<<"\n";
-    cout<<pegs[6]<<"|"<<pegs[7]<<"|"<<pegs[8]<<"|"<<"\n"; 
-}
-
-
-//Private functions of class Tictactoe
-
-//set_next_player
-void TicTacToe::set_next_player()
-{
-    //Set player. If private variable player
-    // X player is O else player is X
-    //using if else 
-    if (player == "X")
+    if (pegs[i]==pegs[i+3] &&pegs[i+3] == pegs[i+6] && pegs[i+6] != " ")
     {
-        player = 'O';
-    }
-    else
-    {
-        player = "X";
+        return true;
     }
 }
+    return false;
+}
 
-//check_board_full
-bool TicTacToe::check_board_full()
+/*
+class function check_row_win
+Win by row if
+0, 1, 2 are equal
+3,4,5 are equal
+6,7,8 are equal
+*/
+bool TicTacToe3::check_row_win()
 {
-    // return false if vector of strings pegs has available slot by checking 
-    //for a “ “(space)in each element. 
-    //Otherwise return true   
-    //using loop
-    bool board_full = true;
-    for (std::size_t i = 0; i < pegs.size(); ++i)
+    for (std::size_t i=0; i<9; i += 3)
     {
-        if (pegs[i] == " ")
+        if (pegs[i]==pegs[i+1] && pegs[i+1]==pegs[i+2] && pegs[i] != " ")
         {
-            board_full = false;
-            break;
+            return true;
         }
     }
-    return board_full;
+    return false;
 }
 
 
-//clear_board
-void TicTacToe::clear_board()
+/*
+class function check_diagonal_win
+Win diagonally
+0 1 2
+3 4 5
+6 7 8
+*/
+bool TicTacToe3::check_diagonal_win()
 {
-    for(std::size_t i = 0; i < pegs.size(); ++i){
-        pegs [i] == " ";
+    if ((pegs[0]==pegs[4] && pegs[4]==pegs[8] && pegs[0] != " ") || (pegs[2]==pegs[4] && pegs[4]==pegs[6] && pegs[2] !=" "))
+    {
+        return true;
     }
+    return false;
 }
