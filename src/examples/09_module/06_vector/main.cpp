@@ -5,12 +5,14 @@ using std::cout;
 
 int main()
 {
-    int num=5;
-    int* ptr=&num;
-    cout<<&num<<"\n";
-    cout<<&ptr;
+    cout<<"Before function executes...\n";
+    use_stack_vector();
+    cout<<"After function executes...\n";
 
-    
+    cout<<"Before function executes...\n";
+    use_heap_vector();
+    cout<<"After function executes...\n";
+
     return 0;
 }
 
