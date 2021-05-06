@@ -6,18 +6,23 @@
 
 
 using std::string;  using std::vector;
-
+#ifndef TicTacToe_H
+#define TicTacToe_H
 //class for tic tac toe game
 class TicTacToe
 {
     public:
-        TicTacToe(unsigned int s):pegs{s*s, " "}{}
+        TicTacToe(){};
+        TicTacToe(unsigned int size):pegs{size*size, " "}{}
+        TicTacToe(vector<string> p, string win) : pegs(p), winner(win){}
+
         bool game_over();
         void start_game(string first_player);
         void mark_board(int position);
-        void display_board() const;
-        string get_player() const{return player;}
-        string get_winner() const{return winner;}; // Homework 7
+        string get_player() const{return player;};
+        string get_winner() const{return winner;};
+        vector<string> get_pegs()const{return pegs;}
+
         friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
         friend std::ostream& operator>>(std::istream& in, TicTacToe& game);
 
@@ -37,3 +42,4 @@ class TicTacToe
         string winner;
 
 };
+#endif 

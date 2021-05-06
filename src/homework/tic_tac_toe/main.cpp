@@ -4,6 +4,7 @@
 #include"tic_tac_toe_manager.h"
 #include"tic_tac_toe_3.h"
 #include"tic_tac_toe_4.h"
+#include"tic_tac_toe_data.h"
 #include<memory>
 
 
@@ -12,7 +13,7 @@ using std::cin;
 
 int main() 
 {
-	TicTacToeManager manager;
+	TicTacToeManager manager(data);
 	std::string player;
 	std::unique_ptr<TicTacToe> tic_tac_toe;
 
